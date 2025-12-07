@@ -1,0 +1,3585 @@
+    :root {
+    --color-primary: #0E7A4B;
+    --color-primary-light: #16a86a;
+    --color-accent: #C1272D;
+    --color-dark: #222222;
+    --color-muted: #777777;
+    --color-bg: #F5F5F5;
+    --color-white: #FFFFFF;
+    --radius-lg: 18px;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: "Cairo", system-ui, sans-serif;
+    background-color: #ffffff;
+    color: var(--color-dark);
+}
+
+body {
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Header & Navbar */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-image {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow-soft);
+}
+
+.logo-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.logo-sub {
+    font-size: 11px;
+    color: var(--color-muted);
+    margin-top: -2px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.nav-links a {
+    color: var(--color-muted);
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Buttons */
+
+.btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    color: var(--color-white);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(14, 122, 75, 0.35);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Hero Section */
+
+.hero {
+    padding: 40px 0 40px;
+    background-image: url('hero.jpg');
+    background-size: cover;
+    background-position: center 20%;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 125px;
+    align-items: center;
+}
+
+.hero-title {
+    color: var(--color-bg);
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.hero-title span {
+    font-size: 70px;
+    display: block;
+    font-weight: 700;
+    /* التدرّج بألوان العلم */
+    background: linear-gradient(
+        to right,
+        #000000 0%,
+        #ffffff 25%,
+        #009739 60%,
+        #ce1126 100%
+    );
+
+    /* إعدادات ضرورية للنص المتدرّج */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* لجعل الحركة واضحة */
+    background-size: 300% 100%;
+
+    /* الأنيميشن */
+    animation: pal-gradient-move 5s linear infinite alternate;
+}
+
+/* تحريك التدرّج من اليمين لليسار أو العكس */
+@keyframes pal-gradient-move {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.hero-subtitle {
+    font-size: 15px;
+    color: var(--color-bg);
+    margin-bottom: 20px;
+}
+
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background-color: var(--color-bg);
+    color: var(--color-muted);
+}
+
+.badge-accent {
+    background-color: rgba(193, 39, 45, 0.08);
+    color: var(--color-accent);
+}
+
+.hero-search {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 10px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.hero-search input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 12px 14px;
+    font-size: 15px;
+}
+
+.hero-search select {
+    border-radius: 999px;
+    border: 1px solid #E0E0E0;
+    padding: 6px 10px;
+    font-size: 13px;
+    background-color: #FAFAFA;
+}
+
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    font-size: 12px;
+    color: #ddd;
+}
+
+.hero-meta-item span {
+    font-size: 25px;
+    font-weight: 700;
+    color: #17db31bf;
+}
+.buy {
+    color: var(--color-primary-light);
+    font-weight: 700;
+    font-size: 20px;
+}
+/* Hero card on the right */
+
+.hero-card {
+    background: radial-gradient(circle at top left, rgba(0, 98, 51, 0.12), transparent 60%), #ffffffde;
+    border-radius: 26px;
+    padding: 22px 20px;
+    box-shadow: var(--shadow-soft);
+}
+
+.hero-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.hero-card-title {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.hero-card-pill {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background-color: rgba(14, 122, 75, 0.08);
+    color: var(--color-primary);
+}
+
+.hero-card-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.stat {
+    background-color: #fafafaa6;
+    border-radius: 14px;
+    padding: 10px;
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+.stat-value {
+    color: #17db31bf;
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 3px;
+}
+
+.hero-mini-services {
+    margin-top: 12px;
+}
+
+.mini-service {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #E0E0E0;
+    font-size: 12px;
+}
+
+.mini-service:last-child {
+    border-bottom: none;
+}
+
+.mini-service-name {
+    font-weight: 500;
+}
+
+.mini-service-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-muted);
+}
+
+.mini-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+}
+
+/* Generic Section */
+
+section {
+    padding: 32px 0;
+}
+
+.section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    font-size: 13px;
+    color: var(--color-muted);
+}
+
+.section-link {
+    font-size: 13px;
+    color: var(--color-primary);
+}
+
+/* Categories */
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.category-card {
+    background-color: var(--color-bg);
+    border-radius: 16px;
+    padding: 14px 12px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.category-card:hover {
+    background-color: #ffffff;
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-2px);
+}
+
+.category-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.category-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.category-desc {
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+/* Services */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.service-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-image {
+    background: linear-gradient(135deg, #000000, var(--color-accent), #006233);
+    height: 120px;
+    position: relative;
+}
+.service-image-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.service-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255,255,255,0.92);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 999px;
+}
+
+.service-body {
+    padding: 12px 12px 10px;
+    flex: 1;
+}
+
+.service-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.service-seller {
+    font-size: 12px;
+    color: var(--color-muted);
+    margin-bottom: 6px;
+}
+
+.service-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+.service-price {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.service-footer {
+    padding: 8px 12px 10px;
+    border-top: 1px solid #F0F0F0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+}
+
+.stars {
+    color: #f6b800;
+}
+
+/* How it works */
+
+.how-section {
+    background-color: var(--color-bg);
+    border-radius: 26px;
+    padding: 24px 20px;
+}
+
+.how-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.how-step {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 14px 12px;
+    text-align: right;
+}
+
+.how-step-number {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background-color: rgba(14, 122, 75, 0.08);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.how-step-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.how-step-text {
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+/* CTA */
+
+.cta {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #000000, #006233);
+    border-radius: 26px;
+    padding: 20px 24px;
+    color: var(--color-white);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.cta-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.cta-text {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-ghost-light {
+    background-color: rgba(255,255,255,0.12);
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 7px 16px;
+    border: 1px solid rgba(255,255,255,0.3);
+    font-size: 13px;
+}
+
+.btn-ghost-light:hover {
+    background-color: rgba(255,255,255,0.18);
+}
+
+/* Footer */
+
+footer {
+    padding: 16px 0 22px;
+    margin-top: 12px;
+    border-top: 1px solid #EDEDED;
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+.footer-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--color-muted);
+}
+/* Responsive */
+
+@media (max-width: 992px) {
+
+    .nav-links,
+    .nav-actions {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0 16px;
+        border-top: 1px solid #F0F0F0;
+    }
+
+    .mobile-menu.open {
+        display: flex;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .hero {
+        padding-top: 24px;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .how-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* إخفاء mobile menu تماماً في الشاشات الكبيرة */
+@media (min-width: 993px) {
+    .mobile-menu {
+        display: none !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .categories-grid,
+    .services-grid,
+    .how-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+}
+/* ===========================
+   Auth Page (Login / Register)
+   =========================== */
+
+.auth-section {
+    min-height: calc(100vh - 74.694px);
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at top left, rgba(0, 98, 51, 0.06), transparent 60%), #ffffff;
+    background-image: url('auth.jpg');
+    background-size: cover;
+    background-position: center 50%;
+}
+
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 640px;
+    background-color: #ffffffe3;
+    border-radius: 26px;
+    padding: 26px 24px 28px;
+    box-shadow: var(--shadow-soft);
+}
+
+.auth-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.auth-subtitle {
+    font-size: 13px;
+    color: var(--color-muted);
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+/* شريط التبويب */
+
+.auth-tabs {
+    display: flex;
+    gap: 10px;
+    background-color: #fafafa;
+    border-radius: 999px;
+    padding: 4px;
+    margin-bottom: 18px;
+}
+
+.auth-tab-btn {
+    flex: 1;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary);
+    transition: all 0.2s ease;
+}
+
+.auth-tab-btn.active {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    color: #ffffff;
+    box-shadow: 0 12px 30px rgba(14, 122, 75, 0.35);
+    border-color: rgba(0, 0, 0, 0.02);
+}
+
+/* نماذج الإدخال */
+
+.auth-form {
+    margin-top: 6px;
+}
+
+.auth-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #E0E0E0;
+    padding: 9px 10px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(14, 122, 75, 0.12);
+}
+
+/* نوع الحساب */
+
+.role-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.role-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid #E0E0E0;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.role-option input {
+    accent-color: var(--color-primary);
+}
+
+.role-option:hover {
+    border-color: var(--color-primary);
+    background-color: #F6FFFA;
+}
+
+/* Check + links */
+
+.form-check {
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+.form-check input {
+    margin-left: 4px;
+    accent-color: var(--color-primary);
+}
+
+.form-check a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.form-row-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+.form-link {
+    color: var(--color-primary);
+}
+
+.auth-submit-btn {
+    width: 100%;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.auth-alt-text {
+    font-size: 12px;
+    text-align: center;
+    color: var(--color-muted);
+}
+
+.link-button {
+    border: none;
+    background: transparent;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+/* أدوات مساعدة */
+
+.hidden {
+    display: none;
+}
+
+/* Responsive for auth */
+
+@media (max-width: 640px) {
+    .auth-card {
+        padding: 22px 16px 24px;
+        border-radius: 20px;
+    }
+
+    .auth-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-tabs {
+        flex-direction: row;
+    }
+}
+/* ===========================
+   Services Listing Page
+   =========================== */
+
+.services-page {
+    padding: 32px 0 40px;
+    background-color: #ffffff;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.page-subtitle {
+    font-size: 13px;
+    color: var(--color-muted);
+}
+
+.breadcrumb {
+    font-size: 12px;
+    color: var(--color-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* إبراز الرابط النشط في القائمة العلوية */
+.nav-links .active-link {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* شريط الفلاتر */
+
+.filters-bar {
+    background-color: var(--color-bg);
+    border-radius: 20px;
+    padding: 14px 14px 12px;
+    margin-bottom: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.filters-main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.filters-extra {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 160px;
+}
+
+.filter-item.small {
+    min-width: 120px;
+}
+
+.filter-item label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-muted);
+}
+
+.filter-input-wrap {
+    background-color: #ffffff;
+    border-radius: 999px;
+    padding: 4px 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.filter-input-wrap input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 13px;
+    padding: 5px 2px;
+}
+
+.filter-item select,
+.filter-item input[type="number"] {
+    border-radius: 999px;
+    border: 1px solid #E0E0E0;
+    padding: 7px 10px;
+    font-size: 13px;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-item select:focus,
+.filter-item input[type="number"]:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(14, 122, 75, 0.12);
+}
+
+.filters-reset-btn {
+    font-size: 12px;
+    padding: 7px 14px;
+}
+
+/* ملخص النتائج */
+
+.results-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--color-muted);
+    margin-bottom: 10px;
+}
+
+.results-summary strong {
+    color: var(--color-primary);
+}
+
+.results-view-toggle {
+    cursor: default;
+}
+
+/* شبكة البطاقات للصفحة */
+
+.services-grid-page {
+    margin-top: 4px;
+    margin-bottom: 16px;
+}
+
+.services-grid-page .service-card {
+    min-height: 100%;
+}
+
+.service-desc {
+    font-size: 12px;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+}
+
+.service-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.service-footer-left span {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+.service-details-btn {
+    font-size: 11px;
+    padding: 5px 10px;
+}
+
+/* ترقيم الصفحات */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 13px;
+}
+
+.page-btn,
+.page-number {
+    border-radius: 999px;
+    border: 1px solid #E0E0E0;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.page-number.active {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 6px 16px rgba(14, 122, 75, 0.3);
+}
+
+.page-btn.disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.page-btn:not(.disabled):hover,
+.page-number:not(.active):hover {
+    border-color: var(--color-primary);
+}
+
+/* Responsive */
+
+@media (max-width: 920px) {
+    .filters-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filters-main {
+        width: 100%;
+    }
+
+    .filters-extra {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 640px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filters-extra {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filters-reset-btn {
+        width: 100%;
+    }
+}
+/* ===========================
+   Service Details Page
+   =========================== */
+
+.service-details-section {
+    padding: 32px 0 40px;
+    background-color: #ffffff;
+}
+
+.service-details-header .service-meta-top {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.service-top-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+/* شبكة محتوى التفاصيل */
+
+.service-details-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+    gap: 22px;
+    margin-top: 18px;
+}
+
+/* العمود الرئيسي */
+
+.service-main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* المعرض */
+
+.service-gallery {
+    background-color: var(--color-bg);
+    border-radius: 20px;
+    padding: 14px 14px 10px;
+}
+
+.service-main-image {
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #000000, var(--color-accent), #006233);
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-main-image-placeholder {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    padding: 20px;
+}
+
+.service-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.service-thumb-item {
+    padding: 6px 10px;
+    border-radius: 999px;
+    background-color: #ffffff;
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+/* الكتل النصية */
+
+.service-block {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 16px 16px 14px;
+    box-shadow: var(--shadow-soft);
+}
+
+.service-block-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.service-block-title.small {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.service-block-text {
+    font-size: 13px;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+}
+
+.service-block-text strong {
+    color: var(--color-dark);
+}
+
+/* قوائم */
+
+.service-list {
+    list-style: none;
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--color-muted);
+}
+
+.service-list li {
+    position: relative;
+    padding-right: 16px;
+    margin-bottom: 4px;
+}
+
+.service-list li::before {
+    content: "•";
+    position: absolute;
+    right: 3px;
+    top: 0;
+    color: var(--color-primary);
+}
+
+/* ميزات الخدمة */
+
+.service-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.service-feature-item {
+    background-color: var(--color-bg);
+    border-radius: 14px;
+    padding: 10px 10px;
+    font-size: 12px;
+}
+
+.service-feature-item h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* التقييمات */
+
+.reviews-summary {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.reviews-score {
+    min-width: 120px;
+    text-align: center;
+}
+
+.reviews-score-main {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.reviews-count {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+.reviews-meta {
+    font-size: 12px;
+    color: var(--color-muted);
+    flex: 1;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.review-item {
+    border-radius: 14px;
+    background-color: var(--color-bg);
+    padding: 10px 12px;
+    font-size: 12px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.review-name {
+    font-weight: 600;
+}
+
+.review-role {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+.review-rating {
+    text-align: left;
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+.review-text {
+    font-size: 12px;
+    color: var(--color-dark);
+}
+
+/* العمود الجانبي */
+
+.service-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* بطاقة التسعير */
+
+.service-pricing-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 16px 16px 14px;
+    box-shadow: var(--shadow-soft);
+}
+
+.service-price-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.service-price-label {
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+.service-price-main {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.service-price-note {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+.service-price-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+.meta-label {
+    color: var(--color-muted);
+    margin-bottom: 2px;
+}
+
+.meta-value {
+    font-weight: 600;
+}
+
+.service-order-btn {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.service-safe-text {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+/* بطاقة البائع */
+
+.seller-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 14px 14px 12px;
+    box-shadow: var(--shadow-soft);
+    font-size: 12px;
+}
+
+.seller-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.seller-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #000000, #006233);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.seller-name {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.seller-meta {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+.seller-info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.seller-info-label {
+    color: var(--color-muted);
+}
+
+.seller-info-value {
+    font-weight: 500;
+}
+
+.seller-contact-btn {
+    width: 100%;
+    margin-top: 8px;
+}
+
+/* أسئلة شائعة مختصرة */
+
+.service-faq-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 14px 14px 10px;
+    box-shadow: var(--shadow-soft);
+    font-size: 12px;
+}
+
+.faq-item + .faq-item {
+    margin-top: 8px;
+}
+
+.faq-q {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.faq-a {
+    color: var(--color-muted);
+}
+
+/* Responsive */
+
+@media (max-width: 960px) {
+    .service-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-sidebar {
+        order: -1;
+    }
+
+    .service-price-meta {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 640px) {
+    .service-features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-gallery {
+        padding: 12px;
+    }
+
+    .service-block {
+        padding: 14px 12px;
+    }
+}
+/* ===========================
+   Add New Service Page
+   =========================== */
+
+.add-service-section {
+    padding: 32px 0 40px;
+    background-color: #ffffff;
+}
+
+.add-service-header {
+    margin-bottom: 16px;
+}
+
+.add-service-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+    gap: 22px;
+}
+
+/* العمود الرئيسي */
+
+.add-service-main {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.add-service-form {
+    width: 100%;
+}
+
+.service-form-block {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 16px 16px 14px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 12px;
+}
+
+.service-form-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.service-form-title.small {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.service-form-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.service-form-grid-3 {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 12px;
+}
+
+/* نص صغير تحت الحقول */
+
+.field-hint {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+/* input مع وحدة (مثل عملة) */
+
+.input-with-addon {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px solid #E0E0E0;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.input-with-addon input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 8px 10px;
+    font-size: 13px;
+}
+
+.input-addon {
+    padding: 0 10px;
+    font-size: 13px;
+    color: var(--color-muted);
+    border-right: 1px solid #E0E0E0;
+}
+
+/* select و textarea في هذه الصفحة ترث نفس شكل الحقول */
+
+.service-form-block select,
+.service-form-block textarea {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #E0E0E0;
+    padding: 9px 10px;
+    font-size: 13px;
+    outline: none;
+    resize: vertical;
+    min-height: 40px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-form-block select:focus,
+.service-form-block textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(14, 122, 75, 0.12);
+}
+
+/* منطقة رفع الملفات */
+
+.file-upload-area {
+    border-radius: 14px;
+    border: 1px dashed #C8C8C8;
+    padding: 14px 12px;
+    background-color: var(--color-bg);
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+.file-upload-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-upload-text span {
+    display: block;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+/* Switch (On/Off) */
+
+.toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #ccc;
+    transition: .2s;
+    border-radius: 999px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: .2s;
+    border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+    background-color: var(--color-primary);
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(16px);
+}
+
+/* أزرار الإرسال */
+
+.service-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+/* العمود الجانبي */
+
+.add-service-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* بطاقة النصائح */
+
+.service-tips-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 14px 14px 10px;
+    box-shadow: var(--shadow-soft);
+    font-size: 12px;
+}
+
+.tips-list {
+    list-style: none;
+    margin-top: 4px;
+}
+
+.tips-list li {
+    position: relative;
+    padding-right: 14px;
+    margin-bottom: 4px;
+    color: var(--color-muted);
+}
+
+.tips-list li::before {
+    content: "✓";
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 11px;
+    color: var(--color-primary);
+}
+
+/* بطاقة المعاينة */
+
+.service-preview-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* نعيد استخدام .service-image, .service-body, .service-footer من قبل */
+
+.service-preview-card .service-body {
+    padding: 12px 12px 10px;
+}
+
+.service-preview-card .service-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* Responsive */
+
+@media (max-width: 960px) {
+    .add-service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .add-service-sidebar {
+        order: -1;
+    }
+
+    .service-form-grid-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .service-form-grid-2,
+    .service-form-grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .service-form-block {
+        padding: 14px 12px;
+    }
+}
+/* ===========================
+   Seller Dashboard
+   =========================== */
+
+.dashboard-section {
+    padding: 24px 0 40px;
+    background-color: #ffffff;
+}
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.4fr);
+    gap: 20px;
+}
+
+/* الشريط الجانبي */
+
+.dashboard-sidebar {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 14px 14px 16px;
+    box-shadow: var(--shadow-soft);
+    height: fit-content;
+}
+
+.dashboard-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.dashboard-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #000000, #006233);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.dashboard-username {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.dashboard-user-meta {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+.dashboard-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.dash-nav-link {
+    font-size: 13px;
+    padding: 7px 9px;
+    border-radius: 12px;
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dash-nav-link:hover {
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+}
+
+.dash-nav-link.active {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(14, 122, 75, 0.35);
+}
+
+.dash-nav-link.muted {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.dashboard-sidebar-cta {
+    font-size: 12px;
+    color: var(--color-muted);
+    border-top: 1px solid #F0F0F0;
+    padding-top: 10px;
+    margin-top: 4px;
+}
+
+/* المحتوى الرئيسي */
+
+.dashboard-main {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.dashboard-header-meta {
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+/* بطاقات الإحصائيات */
+
+.dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.dash-stat-card {
+    background-color: #ffffff;
+    border-radius: 14px;
+    padding: 10px 10px;
+    box-shadow: var(--shadow-soft);
+    font-size: 12px;
+}
+
+.dash-stat-label {
+    color: var(--color-muted);
+    margin-bottom: 4px;
+}
+
+.dash-stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.dash-stat-foot {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+/* كتل المحتوى */
+
+.dashboard-content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr);
+    gap: 14px;
+}
+
+.dash-block {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 14px 14px 12px;
+    box-shadow: var(--shadow-soft);
+}
+
+.dash-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.dash-block-title {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.dash-block-link {
+    font-size: 12px;
+    color: var(--color-primary);
+}
+
+/* جدول الطلبات */
+
+.orders-table {
+    width: 100%;
+    font-size: 12px;
+}
+
+.orders-row {
+    display: grid;
+    grid-template-columns: 0.7fr 1.4fr 1fr 0.9fr 1.1fr;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid #F2F2F2;
+    align-items: center;
+}
+
+.orders-header {
+    font-weight: 600;
+    color: var(--color-muted);
+    border-bottom: 1px solid #E5E5E5;
+}
+
+/* الحالات (Status badges) */
+
+.status-badge {
+    border-radius: 999px;
+    padding: 3px 8px;
+    font-size: 11px;
+    display: inline-block;
+}
+
+.status-badge.in-progress {
+    background-color: #E8FFF3;
+    color: var(--color-primary);
+}
+
+.status-badge.waiting {
+    background-color: #FFF7E6;
+    color: #c77b00;
+}
+
+.status-badge.late {
+    background-color: #FFE9E9;
+    color: #c0392b;
+}
+
+.status-badge.active {
+    background-color: #E8FFF3;
+    color: var(--color-primary);
+}
+
+.status-badge.paused {
+    background-color: #F4F4F4;
+    color: var(--color-muted);
+}
+
+.status-badge.status-pending {
+    background-color: #FFF7E6;
+    color: #c77b00;
+}
+
+.status-badge.status-approved {
+    background-color: #E8FFF3;
+    color: var(--color-primary);
+}
+
+.status-badge.status-rejected {
+    background-color: #FFE9E9;
+    color: #c0392b;
+}
+
+/* أرباح */
+
+.earnings-summary {
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.earnings-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid #F3F3F3;
+}
+
+.earnings-row:last-child {
+    border-bottom: none;
+}
+
+.dash-withdraw-btn {
+    width: 100%;
+    margin-top: 6px;
+}
+
+/* الرسائل */
+
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 12px;
+}
+
+.message-item {
+    padding: 7px 8px;
+    border-radius: 12px;
+    background-color: var(--color-bg);
+}
+
+.message-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.message-meta {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+/* خدماتي (جدول مبسط) */
+
+.services-list-table {
+    width: 100%;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.services-list-row {
+    display: grid;
+    grid-template-columns: 2.2fr 0.9fr 0.9fr 0.9fr 1.4fr;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid #F2F2F2;
+    align-items: center;
+}
+
+.services-list-header {
+    font-weight: 600;
+    color: var(--color-muted);
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.svc-list-title {
+    font-weight: 600;
+}
+
+.svc-list-sub {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+.svc-list-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.link-button.small {
+    font-size: 11px;
+}
+
+.dash-add-service-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-sidebar {
+        order: -1;
+    }
+
+    .dashboard-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .dashboard-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .orders-row {
+        grid-template-columns: 1.1fr 1.4fr 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .orders-row > :nth-child(4),
+    .orders-row > :nth-child(5) {
+        font-size: 11px;
+    }
+
+    .services-list-row {
+        grid-template-columns: 1.8fr 1.2fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    .services-list-row > :nth-child(3),
+    .services-list-row > :nth-child(4),
+    .services-list-row > :nth-child(5) {
+        font-size: 11px;
+    }
+
+    .dashboard-section {
+        padding-top: 18px;
+    }
+}
+/* ===========================
+   Buyer Dashboard
+   =========================== */
+
+.buyer-dashboard-section {
+    /* يمكن تخصيص شيء إضافي إن لزم */
+}
+
+.buyer-sidebar .dashboard-username {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* شبكة المحتوى في لوحة المشتري (يمكننا إعادة استخدام dashboard-content-grid) */
+
+.buyer-content-grid {
+    /* نعتمد نفس الـ grid من .dashboard-content-grid، لا حاجة لتعديل */
+}
+
+/* جدول الطلبات من منظور المشتري */
+
+.buyer-orders-table .orders-row {
+    /* نفس شكل جدول الطلبات، لكن يمكن تخصيص لاحقاً */
+}
+
+/* تذكير التقييمات */
+
+.buyer-reminder-block {
+    font-size: 12px;
+}
+
+.buyer-reminder-text {
+    font-size: 12px;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+}
+
+.buyer-reminder-text strong {
+    color: var(--color-primary);
+}
+
+.buyer-reminder-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.buyer-reminder-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 8px;
+    border-radius: 12px;
+    background-color: var(--color-bg);
+}
+
+.buyer-reminder-title {
+    font-weight: 600;
+}
+
+.buyer-reminder-meta {
+    font-size: 11px;
+    color: var(--color-muted);
+}
+
+/* زر صغير داخل البطاقة */
+
+.btn-xs {
+    padding: 4px 10px;
+    font-size: 11px;
+}
+
+/* المفضلة */
+
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.favorite-card .service-body {
+    padding: 12px 12px 10px;
+}
+
+/* تحسين الاستجابة على الشاشات الصغيرة */
+
+@media (max-width: 900px) {
+    .favorites-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .buyer-reminder-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+/* ===========================
+   Static Pages (About / FAQ / Terms / Privacy)
+   =========================== */
+
+.static-page-section {
+    padding: 32px 0 40px;
+    background-color: #ffffff;
+}
+
+.static-page {
+    max-width: 900px;
+}
+
+.static-block {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 16px 16px 14px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 12px;
+}
+
+.static-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.static-text {
+    font-size: 13px;
+    color: var(--color-muted);
+}
+
+.static-list {
+    list-style: none;
+    font-size: 13px;
+    color: var(--color-muted);
+}
+
+.static-list li {
+    position: relative;
+    padding-right: 14px;
+    margin-bottom: 4px;
+}
+
+.static-list li::before {
+    content: "•";
+    position: absolute;
+    right: 2px;
+    top: 0;
+    color: var(--color-primary);
+}
+
+.static-block.two-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.faq-block .faq-item + .faq-item {
+    margin-top: 10px;
+}
+
+/* ===========================
+   Profile Page
+   =========================== */
+
+.profile-section {
+    padding: 32px 0 40px;
+    background-color: #ffffff;
+}
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 20px;
+}
+
+.profile-sidebar {
+    max-width: 320px;
+}
+
+.profile-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 16px 16px 14px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    font-size: 13px;
+}
+
+.profile-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #000000, #006233);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0 auto 8px;
+}
+
+.profile-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.profile-role {
+    font-size: 12px;
+    color: var(--color-muted);
+    margin-bottom: 10px;
+}
+
+.profile-meta-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+.profile-main {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ===========================
+   Settings Page
+   =========================== */
+
+.settings-section {
+    padding: 32px 0 40px;
+    background-color: #ffffff;
+}
+
+.settings-layout {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.settings-form {
+    font-size: 13px;
+}
+
+.settings-divider {
+    border-top: 1px solid #F0F0F0;
+    margin: 10px 0 10px;
+}
+
+.settings-subtitle {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.settings-toggles {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Responsive for new pages */
+
+@media (max-width: 768px) {
+    .static-block.two-cols {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-sidebar {
+        max-width: 100%;
+    }
+}
+/* User Menu Styling */
+.user-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-menu-trigger {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-initial {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #133a6f;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.user-menu-dropdown {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px 0;
+    width: 180px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    display: none;
+    z-index: 21;
+}
+
+.user-menu:hover .user-menu-dropdown {
+    display: block;
+}
+
+.user-menu-item {
+    display: block;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.user-menu-item:hover {
+    background: #f2f5ff;
+}
+
+.logout-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.logout-btn:hover {
+    background: #fff0f0;
+    color: #c00;
+}
+/* صندوق معلومات المستخدم داخل قائمة الموبايل */
+.mobile-user-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.mobile-user-avatar img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-letter {
+    width: 48px;
+    height: 48px;
+    background: #133a6f;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-user-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.mobile-user-email {
+    font-size: 12px;
+    color: gray;
+}
+
+.mobile-auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+/* حاوية الإشعارات في الهيدر */
+.nav-notifications {
+    position: relative;
+    margin-inline-start: 16px;
+}
+
+/* حاوية الـ dropdown (لا نلمسها في الـ JS) */
+.notif-dropdown {
+    position: relative;
+}
+
+/* زر الجرس */
+.notif-button {
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 6px;
+    border-radius: 999px;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.notif-button:hover {
+    background-color: #f3f4f6;
+    transform: translateY(-1px);
+}
+
+/* شارة عدد الإشعارات */
+.notif-badge {
+    position: absolute;
+    top: -4px;
+    inset-inline-start: -4px; /* يدعم RTL و LTR */
+    background: #ef4444;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 999px;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* لوحة الإشعارات المنسدلة */
+.notif-menu {
+    position: absolute;
+    inset-inline-end: 0;                /* تلتصق بيمين الهيدر في RTL */
+    margin-top: 12px;
+    width: min(360px, 90vw);
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+    padding: 8px 0;
+    z-index: 50;
+    border: 1px solid #e5e7eb;
+    display: none;                      /* تُفتح بالـ JS عن طريق كلاس open */
+}
+
+/* نفس الفكرة التي لديك: عند إضافة open تظهر القائمة */
+.notif-dropdown.open .notif-menu {
+    display: block;
+}
+
+/* رأس القائمة: عنوان + زر (تحديد الكل كمقروء) */
+.notif-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 16px 8px;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.notif-menu-header form {
+    margin: 0;
+}
+
+.notif-mark-all {
+    background: #eff6ff;
+    color: #2563eb;
+    border: none;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.notif-mark-all:hover {
+    background: #dbeafe;
+}
+
+/* عنصر الإشعار نفسه (form) */
+.notif-item {
+    margin: 0;
+}
+
+/* زر الإشعار داخل الفورم */
+.notif-item-btn {
+    width: 100%;
+    text-align: right;
+    background: transparent;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    display: block;
+    transition: background-color 0.12s ease;
+}
+
+.notif-item-btn:hover {
+    background-color: #f9fafb;
+}
+
+/* عنوان الإشعار */
+.notif-item-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #111827;
+}
+
+/* نص الإشعار */
+.notif-item-body {
+    font-size: 12px;
+    color: #4b5563;
+    margin-bottom: 4px;
+}
+
+/* وقت الإشعار */
+.notif-item-time {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+/* في حال لا توجد إشعارات */
+.notif-empty {
+    padding: 16px;
+    font-size: 13px;
+    text-align: center;
+    color: #6b7280;
+}
+
+/* الفوتر الخاص برابط "عرض جميع الإشعارات" */
+.notif-menu-footer {
+    border-top: 1px solid #f3f4f6;
+    padding: 8px 16px 10px;
+    text-align: center;
+}
+
+.notif-menu-footer a {
+    font-size: 13px;
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.notif-menu-footer a:hover {
+    text-decoration: underline;
+}
+.avatar-noti{
+    display: flex;
+    align-items: center;
+}
+/* ضبط الإشعارات في الشاشات الصغيرة */
+@media (max-width: 992px) {
+    .logo {
+        flex: 1;
+    }
+    .nav-notifications {
+        margin-left: 10px;
+    }
+}
+
+/* تحسين الـ Hero في الشاشات الصغيرة جدا */
+@media (max-width: 640px) {
+
+    /* جعل عناصر البحث تحت بعضها */
+    .hero-search {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .hero-search input,
+    .hero-search select,
+    .hero-search button {
+        width: 100%;
+    }
+
+    /* تصغير النصوص قليلاً */
+    .hero-title {
+        font-size: 18px !important;
+        line-height: 1.5;
+    }
+
+    .hero-subtitle {
+        font-size: 13px;
+    }
+
+    .hero-meta {
+        gap: 10px;
+        font-size: 11px;
+    }
+}
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.20)
+    );
+    pointer-events: none;
+}
+
+/*  محتوى الهيرو فوق الطبقة */
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* تخطيط عام لصفحة المحادثة */
+.chat-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(260px, 1fr);
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* العمود الرئيسي */
+.chat-main {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* صندوق المحادثة بالكامل */
+.chat-box {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 14px 14px 10px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    border: 1px solid #f1f1f1;
+}
+
+/* شريط حالة الطلب أعلى المحادثة */
+.order-status-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* justify-content: space-between;
+    align-items: center; */
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+}
+
+.order-status-text {
+    font-size: 13px;
+    color: #334155;
+}
+
+/* لاصقة حالة الطلب */
+.order-status-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* يمكنك تعديل الألوان حسب الحالات لديك */
+.order-status-tag.pending {
+    background: #fff7e6;
+    color: #ad6800;
+}
+
+.order-status-tag.in_progress {
+    background: #e6f4ff;
+    color: #0958d9;
+}
+
+.order-status-tag.delivered {
+    background: #e6fffb;
+    color: #08979c;
+}
+
+.order-status-tag.completed {
+    background: #f6ffed;
+    color: #389e0d;
+}
+
+.order-status-tag.cancelled {
+    background: #fff1f0;
+    color: #cf1322;
+}
+
+/* صندوق النظام داخل المحادثة (مثل إلغاء الطلب) */
+.chat-system-box {
+    border-radius: 12px;
+    background: #fff7f7;
+    border: 1px dashed #fecaca;
+}
+
+/* منطقة الرسائل */
+.chat-messages {
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 12px;
+    max-height: 420px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+}
+
+/* شريط تمرير لطيف */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #cbd5f5;
+    border-radius: 999px;
+}
+
+/* الصف لكل رسالة */
+.chat-message-row {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.chat-message-row.mine {
+    justify-content: flex-start;
+    /* لأن الصفحة RTL: الرسائل الخاصة بك على اليمين بصريًا */
+}
+
+.chat-message-row.theirs {
+    justify-content: flex-end;
+}
+
+/* فقاعة الرسالة */
+.chat-message-bubble {
+    max-width: 80%;
+    padding: 8px 10px;
+    border-radius: 14px;
+    background: #f5f7fb;
+    font-size: 13px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+/* فقاعة رسائل المستخدم الحالي */
+.chat-message-row.mine .chat-message-bubble {
+    background: linear-gradient(135deg, #0f172a, #1d4ed8);
+    color: #ffffff;
+}
+
+/* فقاعة رسائل الطرف الآخر */
+.chat-message-row.theirs .chat-message-bubble {
+    background: #ffffff;
+    color: #111827;
+}
+
+/* رأس الرسالة (الاسم + الوقت) */
+.chat-message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.chat-message-name {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.chat-message-time {
+    font-size: 11px;
+    opacity: 0.75;
+}
+
+/* نص الرسالة */
+.chat-message-body {
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+/* صف حقل إدخال الرسالة */
+.chat-input-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    margin-top: 8px;
+}
+
+.chat-input-row textarea {
+    flex: 1;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    padding: 8px 10px;
+    font-size: 13px;
+    resize: vertical;
+}
+
+.chat-input-row textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* زر الإرسال داخل المحادثة (يمكن أن يعتمد على .btn في style.css) */
+.chat-input-row .btn {
+    border-radius: 999px;
+    font-size: 13px;
+    padding-inline: 18px;
+}
+
+/* العمود الجانبي */
+.chat-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* كرت معلومات الخدمة/السعر */
+.service-pricing-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 12px 14px;
+    border: 1px solid #eef0f4;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+}
+
+.service-price-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.service-price-label {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.service-price-main {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.service-price-note {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.service-price-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.meta-label {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+.meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: #111827;
+}
+
+/* صندوق معلومات المشتري/البائع */
+.order-user-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 10px 12px;
+    border: 1px solid #eef0f4;
+}
+
+.buyer-header,
+.seller-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.buyer-avatar,
+.seller-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+}
+
+.buyer-avatar {
+    background: linear-gradient(135deg, #0f766e, #22c55e);
+}
+
+.seller-avatar {
+    background: linear-gradient(135deg, #1d4ed8, #0f172a);
+}
+
+.buyer-name,
+.seller-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.buyer-meta span,
+.seller-meta span {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+/* الجملة التي فيها رابط عرض ملف البائع/المشتري */
+.buyer-meta a,
+.seller-meta a {
+    font-size: 11px;
+}
+
+/* رسالة تسليم الطلب أعلى الشات */
+.order-delivery-info {
+    border-radius: 14px;
+    border: 1px solid #bbf7d0;
+    background: #f0fdf4;
+}
+
+/* مربعات الملاحظات/الإجراءات في الأسفل */
+.order-actions-box {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #eef0f4;
+    padding: 10px 12px;
+}
+
+/* أزرار صغيرة */
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+/* مربع التقييم إن وجد */
+.review-box {
+    margin-top: 14px;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #eee;
+    padding: 10px 12px;
+}
+
+.review-box-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+/* زر إلغاء الطلب (يستخدم الكلاس .cancel) */
+.cancel {
+    background: linear-gradient(135deg, #f97373, #b91c1c);
+    border: none;
+}
+
+.cancel:hover {
+    box-shadow: 0 12px 30px rgba(185, 28, 28, 0.35);
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 900px) {
+    .chat-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .chat-sidebar {
+        order: -1;
+    }
+
+    .chat-box {
+        padding: 12px;
+    }
+}
+
+/* =========== صفحة مزودي الخدمات =========== */
+
+.providers-page .page-section-header,
+.providers-page .services-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.providers-page .providers-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* نستخدم نفس كرت الخدمات لكن بمسافات أنسب للمزوّدين */
+.provider-card {
+    padding: 14px 16px;
+}
+
+.provider-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.provider-meta-row {
+    display: flex;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--color-muted);
+    margin-bottom: 2px;
+}
+
+.provider-meta-label {
+    font-weight: 500;
+}
+
+.provider-card .service-card-footer {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review-item {
+    background: #fff;
+    border-radius: 14px;
+    padding: 10px 14px;
+    border: 1px solid #f0f0f0;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.review-author {
+    font-size: 13px;
+}
+
+.review-rating .star {
+    font-size: 12px;
+    margin-left: 2px;
+}
+
+.star-filled {
+    color: #f6b400;
+}
+
+.star-empty {
+    color: #ddd;
+}
+
+.review-meta {
+    font-size: 11px;
+    color: var(--color-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.review-comment {
+    font-size: 12px;
+    line-height: 1.6;
+}
+/* صندوق تسليم الطلب من البائع */
+.order-delivery-box {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    background-color: #ffffff;
+}
+
+.order-delivery-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.order-delivery-error {
+    background: #ffe6e6;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 12px;
+    margin-bottom: 8px;
+    border: 1px solid #f4c2c2;
+}
+
+.order-delivery-label {
+    font-size: 12px;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.order-delivery-textarea {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 6px 8px;
+    font-size: 13px;
+    resize: vertical;
+}
+
+.order-delivery-file-group {
+    margin-top: 8px;
+}
+
+.order-delivery-file-input {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+}
+
+.order-delivery-actions {
+    margin-top: 10px;
+}
+
+/* أزرار حالة الطلب عند البائع */
+.order-status-actions-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.order-reject-button {
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+.order-reject-button:hover {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+.dashboard-section {
+    padding: 32px 0;
+}
+
+.dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.dashboard-grid-2 {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: 16px;
+}
+
+@media (max-width: 900px) {
+    .dashboard-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 14px 16px;
+    border: 1px solid #eee;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: var(--color-muted);
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.services-list-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.service-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.service-row:last-child {
+    border-bottom: none;
+}
+
+.service-row-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.service-row-meta {
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+.services-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+    gap: 20px;
+}
+
+.services-sidebar {
+    align-self: flex-start;
+}
+
+.filter-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #eee;
+    padding: 12px 14px;
+}
+
+.filter-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.filter-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.filter-list li a {
+    display: block;
+    padding: 6px 4px;
+    font-size: 13px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.filter-list li a:hover {
+    background: #f2f5ff;
+}
+
+.active-filter {
+    background: #133a6f;
+    color: #fff !important;
+}
+
+@media (max-width: 900px) {
+    .services-layout {
+        grid-template-columns: 1fr;
+    }
+}  
