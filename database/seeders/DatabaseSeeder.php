@@ -2,24 +2,48 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $categories = [
+            [
+                'name' => 'تصميم وجرافيك',
+                'slug' => 'design-graphic',
+                'description' => 'خدمات التصميم والهوية البصرية',
+                'parent_id' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'برمجة وتطوير',
+                'slug' => 'programming-dev',
+                'description' => 'تطوير المواقع والتطبيقات',
+                'parent_id' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'تسويق إلكتروني',
+                'slug' => 'digital-marketing',
+                'description' => 'إدارة الحملات والظهور الرقمي',
+                'parent_id' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ];
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        foreach ($categories as $category) {
+            DB::table('categories')->updateOrInsert(
+                ['slug' => $category['slug']],
+                $category
+            );
+        }
     }
 }
