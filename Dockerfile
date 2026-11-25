@@ -26,4 +26,4 @@ RUN if [ -f package.json ]; then npm install && npm run build; fi
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # تشغيل Apache على المنفذ الذي يحدده Render
-CMD php artisan migrate --force && sed -i "s/80/${PORT:-80}/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf && apache2-foreground
+CMD php artisan migrate --force && php artisan db:seed --force && sed -i "s/80/${PORT:-80}/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf && apache2-foreground
