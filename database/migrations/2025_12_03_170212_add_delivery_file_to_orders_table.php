@@ -9,16 +9,28 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('delivery_file')->nullable()->after('status');
-            $table->text('delivery_note')->nullable()->after('delivery_file');
-            $table->timestamp('delivered_at')->nullable()->after('delivery_note');
+            if (!Schema::hasColumn('orders', 'delivery_file')) {
+                $table->string('delivery_file')->nullable()->after('status');
+            }
+            if (!Schema::hasColumn('orders', 'delivery_note')) {
+                $table->text('delivery_note')->nullable()->after('delivery_file');
+            }
+            if (!Schema::hasColumn('orders', 'delivered_at')) {
+                $table->timestamp('delivered_at')->nullable()->after('delivery_note');
+            }
         });
     }
 
     public function down(): void
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn(['delivery_file', 'delivery_note', 'delivered_at']);
+            $columns = array_filter(
+                ['delivery_file', 'delivery_note', 'delivered_at'],
+                fn ($col) => Schema::hasColumn('orders', $col)
+            );
+            if (!empty($columns)) {
+                $table->dropColumn($columns);
+            }
         });
     }
 };
