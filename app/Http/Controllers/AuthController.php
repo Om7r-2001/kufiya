@@ -6,78 +6,66 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Notification;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function showLoginForm()
     {
-        $request->validate([
-            'name'                  => 'required|string|max:255',
-            'email'                 => 'required|email|unique:users,email',
-            'password'              => 'required|confirmed|min:6',
-            'role'                  => 'required|in:buyer,seller',
-        ]);
-
-        $user = User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'password' => Hash::make($request->password),
-            'role'     => $request->role,
-        ]);
-
-        // إرسال إشعار لكل المشرفين عند تسجيل مستخدم جديد
-        $admins = User::where('role', 'admin')->get();
-
-        foreach ($admins as $admin) {
-            Notification::create([
-                'user_id' => $admin->id,              // المشرف المستلم
-                'type'    => 'new_user',             // نوع مخصص
-                'title'   => 'تم تسجيل مستخدم جديد',
-                'body'    => "الاسم: {$user->name} - الدور: {$user->role}",
-                'link'    => route('admin.users.index'),
-            ]);
-        }
-
-        auth()->login($user);
-
-        // إرسال رسالة التفعيل
-        //$user->sendEmailVerificationNotification();
-
-        // توجيه المستخدم لشاشة "فعِّل بريدك"
-        return redirect()->route('verification.notice');
+        return view('auth.login');
     }
 
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email'    => 'required|email',
-            'password' => 'required',
+            'email'    => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        if (!Auth::attempt($credentials, $request->boolean('remember'))) {
-            return back()
-            ->withErrors(['email' => 'بيانات الدخول غير صحيحة'])
-            ->withInput($request->only('email'))
-            ->with('auth_tab', 'login'); 
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+            $request->session()->regenerate();
+
+            $user = Auth::user();
+
+            if ($user->role === 'admin') {
+                return redirect()->intended('/admin/dashboard');
+            }
+
+            return redirect()->intended('/');
         }
 
-        $request->session()->regenerate();
-
-        return $this->redirectAfterLogin(Auth::user());
+        return back()->withErrors([
+            'email' => 'بيانات الدخول غير صحيحة.',
+        ])->onlyInput('email');
     }
 
-    protected function redirectAfterLogin($user)
+    public function showRegisterForm()
     {
-        if ($user->role === 'seller') {
-            return redirect()->route('dashboard.seller');
-        }
+        return view('auth.register');
+    }
 
-        if ($user->role === 'buyer') {
-            return redirect()->route('dashboard.buyer');
-        }
+    public function register(Request $request)
+    {
+        $validated = $request->validate([
+            'name'     => ['required', 'string', 'max:255'],
+            'email'    => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role'     => ['nullable', 'in:buyer,seller'],
+        ]);
 
-        return redirect()->route('home');
+        $user = User::create([
+            'name'              => $validated['name'],
+            'email'             => $validated['email'],
+            'password'          => Hash::make($validated['password']),
+            'role'              => $validated['role'] ?? 'buyer',
+            'email_verified_at' => now(),
+        ]);
+
+        auth()->login($user);
+
+        // تم إيقاف إرسال رسالة التفعيل مؤقتاً لتفادي مهلة اتصال SMTP
+        // $user->sendEmailVerificationNotification();
+
+        return redirect('/');
     }
 
     public function logout(Request $request)
@@ -87,6 +75,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('auth');
+        return redirect('/');
     }
 }
