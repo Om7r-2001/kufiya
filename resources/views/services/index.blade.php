@@ -55,12 +55,10 @@
                         <a href="{{ route('services.show', $service->slug) }}" class="service-thumbnail">
                             @php
                             $mainImage = $service->images->firstWhere('is_main', true) ?? $service->images->first();
+                            $serviceImgUrl = $mainImage ? asset('storage/' . $mainImage->path) : asset('hero.jpg');
                             @endphp
-                            @if($mainImage)
-                            <img src="{{ asset('storage/'.$mainImage->path) }}" alt="{{ $service->title }}">
-                            @else
-                            <div class="service-placeholder"></div>
-                            @endif>
+                            <img src="{{ $serviceImgUrl }}" alt="{{ $service->title }}"
+                                onerror="this.onerror=null;this.src='{{ asset('hero.jpg') }}';">
                         </a>
                         <div class="service-body">
                             <div class="service-category">
