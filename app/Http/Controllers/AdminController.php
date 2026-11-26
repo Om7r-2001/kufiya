@@ -38,7 +38,7 @@ class AdminController extends Controller
             ->get();
 
         $recentOrders = Order::with(['buyer', 'seller', 'service'])
-            ->latest()
+            ->orderByDesc('id')
             ->take(5)
             ->get();
 
