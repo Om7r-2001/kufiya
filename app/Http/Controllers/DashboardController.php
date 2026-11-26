@@ -24,12 +24,12 @@ class DashboardController extends Controller
 
         $latestOrders = Order::with(['service', 'project', 'seller'])
             ->where('buyer_id', $userId)
-            ->latest()
+            ->orderByDesc('id')
             ->take(5)
             ->get();
-            
+
         $latestProjects = Project::where('user_id', $userId)
-            ->latest()
+            ->orderByDesc('id')
             ->take(5)
             ->withCount('bids')
             ->get();
@@ -63,12 +63,12 @@ class DashboardController extends Controller
 
         $latestOrders = Order::with(['service', 'buyer'])
             ->where('seller_id', $userId)
-            ->latest()
+            ->orderByDesc('id')
             ->take(5)
             ->get();
 
         $latestServices = Service::where('user_id', $userId)
-            ->latest()
+            ->orderByDesc('id')
             ->take(5)
             ->get();
 
