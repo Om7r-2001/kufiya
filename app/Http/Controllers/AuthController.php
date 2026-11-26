@@ -42,7 +42,7 @@ class AuthController extends Controller
         auth()->login($user);
 
         // إرسال رسالة التفعيل
-        $user->sendEmailVerificationNotification();
+        //$user->sendEmailVerificationNotification();
 
         // توجيه المستخدم لشاشة "فعِّل بريدك"
         return redirect()->route('verification.notice');
