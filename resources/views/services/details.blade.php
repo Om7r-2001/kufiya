@@ -55,26 +55,24 @@
                     {{-- المعرض --}}
                     <div class="service-gallery">
                         <div class="service-main-image">
-                            @if($service->images->count())
                             @php
-                            $mainImage = $service->images->firstWhere('is_main', true)
-                            ?? $service->images->first();
+                            $mainImage = $service->images->firstWhere('is_main', true) ?? $service->images->first();
+                            $mainImageUrl = $mainImage ? asset('storage/' . $mainImage->path) : asset('hero.jpg');
                             @endphp
-                            <img src="{{ asset('storage/'.$mainImage->path) }}"
-                                alt="صورة رئيسية للخدمة {{ $service->title }}" style="width:100%; height:auto;">
-                            @else
-                            <div class="service-main-image-placeholder">
-                                لا توجد صورة مرفقة لهذه الخدمة حالياً، يمكن إضافة صور من لوحة البائع.
-                            </div>
-                            @endif
+                            <img src="{{ $mainImageUrl }}"
+                                alt="صورة رئيسية للخدمة {{ $service->title }}"
+                                style="width:100%; height:auto;"
+                                onerror="this.onerror=null;this.src='{{ asset('hero.jpg') }}';">
                         </div>
 
                         @if($service->images->count() > 1)
                         <div class="service-thumbs">
                             @foreach($service->images as $image)
                             <div class="service-thumb-item">
-                                <img src="{{ asset('storage/'.$image->path) }}" alt="معاينة للخدمة"
-                                    style="width:100%; border-radius:10px;">
+                                <img src="{{ asset('storage/'.$image->path) }}"
+                                    alt="معاينة للخدمة"
+                                    style="width:100%; border-radius:10px;"
+                                    onerror="this.onerror=null;this.src='{{ asset('hero.jpg') }}';">
                             </div>
                             @endforeach
                         </div>
@@ -254,13 +252,13 @@
                             @endauth
 
                             <p class="service-safe-text">
-                                يتم حفظ المبلغ في محفظة المنصة ولا يُحوَّل لمزود الخدمة إلا بعد تأكيدك استلام العمل.
+                                يتم حفظ المبلغ في محفظة المنصة ولا يُحوَّل لمزود الخدمة إلا بعد تأكيدك استلام العمل.
                             </p>
                         </div>
 
 
                         <p class="service-safe-text">
-                            يتم حفظ المبلغ في محفظة المنصة ولا يُحوَّل لمزود الخدمة إلا بعد تأكيدك استلام العمل.
+                            يتم حفظ المبلغ في محفظة المنصة ولا يُحوَّل لمزود الخدمة إلا بعد تأكيدك استلام العمل.
                         </p>
                     </div>
 
