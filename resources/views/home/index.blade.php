@@ -183,12 +183,12 @@
                     <a href="{{ route('services.show', $service->slug) }}" class="service-image">
                         @php
                         $mainImage = $service->images->firstWhere('is_main', true) ?? $service->images->first();
+                        $serviceImgUrl = $mainImage ? asset('storage/' . $mainImage->path) : asset('hero.jpg');
                         @endphp
 
-                        @if($mainImage)
-                        <img src="{{ asset('storage/'.$mainImage->path) }}" alt="{{ $service->title }}"
-                            class="service-image-img">
-                        @endif
+                        <img src="{{ $serviceImgUrl }}" alt="{{ $service->title }}"
+                            class="service-image-img"
+                            onerror="this.onerror=null;this.src='{{ asset('hero.jpg') }}';">
 
                         <span class="service-badge">
                             {{ $service->category?->name ?? 'خدمة مميزة' }}
