@@ -108,7 +108,11 @@
                             <button class="user-menu-trigger">
                                 @if(auth()->user()->avatar)
                                 <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="الصورة الشخصية"
-                                    class="user-avatar">
+                                    class="user-avatar"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <span class="user-initial" style="display: none;">
+                                    {{ mb_substr(auth()->user()->name, 0, 1) }}
+                                </span>
                                 @else
                                 <span class="user-initial">
                                     {{ mb_substr(auth()->user()->name, 0, 1) }}
@@ -157,7 +161,11 @@
                 <div class="mobile-user-box">
                     <div class="mobile-user-avatar">
                         @if(auth()->user()->avatar)
-                        <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="الصورة الشخصية">
+                        <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="الصورة الشخصية"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span class="avatar-letter" style="display: none;">
+                            {{ mb_substr(auth()->user()->name, 0, 1) }}
+                        </span>
                         @else
                         <span class="avatar-letter">
                             {{ mb_substr(auth()->user()->name, 0, 1) }}
