@@ -76,7 +76,11 @@
                                 <div class="profile-avatar small">
                                     @if($user->avatar)
                                     <img src="{{ asset('storage/'.$user->avatar) }}" alt="الصورة الشخصية"
-                                        style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                                        style="width:100%; height:100%; border-radius:50%; object-fit:cover;"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <span class="profile-avatar-letter" style="display: none;">
+                                        {{ mb_substr($user->name, 0, 1) }}
+                                    </span>
                                     @else
                                     <span class="profile-avatar-letter">
                                         {{ mb_substr($user->name, 0, 1) }}
@@ -213,6 +217,24 @@
 .profile-avatar.small {
     width: 48px;
     height: 48px;
+    border-radius: 50%;
+    background: #f2f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #133a6f;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.profile-avatar-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 @media (max-width: 900px) {
