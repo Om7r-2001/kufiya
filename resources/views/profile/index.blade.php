@@ -28,7 +28,11 @@
                         <div class="profile-avatar">
                             @if($user->avatar)
                             <img src="{{ asset('storage/'.$user->avatar) }}" alt="الصورة الشخصية"
-                                style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                                style="width:100%; height:100%; border-radius:50%; object-fit:cover;"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="profile-avatar-letter" style="display: none;">
+                                {{ mb_substr($user->name, 0, 1) }}
+                            </span>
                             @else
                             <span class="profile-avatar-letter">
                                 {{ mb_substr($user->name, 0, 1) }}
@@ -135,10 +139,15 @@
     font-size: 26px;
     font-weight: 700;
     color: #133a6f;
+    overflow: hidden;
 }
 
 .profile-avatar-letter {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .profile-name {
