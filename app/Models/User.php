@@ -2,16 +2,13 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -25,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'email_verified_at',
         'role',
         'phone',
         'country',
@@ -55,7 +53,8 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
-     // === العلاقات ===
+
+    // === العلاقات ===
 
     // الخدمات التي يقدمها المستخدم كبائع
     public function services(): HasMany
@@ -104,7 +103,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Review::class, 'seller_id');
     }
-    //الاشعارات 
+
+    // الاشعارات
     public function notifications()
     {
         return $this->hasMany(Notification::class);
@@ -116,5 +116,4 @@ class User extends Authenticatable implements MustVerifyEmail
                     ->where('is_read', false)
                     ->latest();
     }
-
 }
